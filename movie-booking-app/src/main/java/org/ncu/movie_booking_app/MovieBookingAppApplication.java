@@ -49,6 +49,18 @@ public class MovieBookingAppApplication implements CommandLineRunner{
 		 */
 		
 		movieBookingService.fetchAllBookings().forEach(movieBooking -> System.out.println(movieBooking));
+		
+		System.out.println("================ Find Movie Booking ============");
+		
+		System.out.println(movieBookingService.fetchMovieBookingById(104));
+		
+		System.out.println("================ Update Movie Booking ============");
+	
+		System.out.println(movieBookingService.updateBooking(104, "Batman Begins", "Gaurav", 14));
+		
+		System.out.println("================ Remove Movie Booking ============");
+		
+		System.out.println(movieBookingService.deleteBooking(104));
 	}
 
 }

@@ -1,6 +1,6 @@
 package org.ncu.movie_booking_app.model;
 
-public class MovieBooking{
+public class MovieBooking implements Comparable<MovieBooking>{
 	int bookingId;
 	String movieName;
 	String customerName;
@@ -41,6 +41,12 @@ public class MovieBooking{
 	public String toString() {
 		return "MovieBooking [bookingId=" + bookingId + ", movieName=" + movieName + ", customerName=" + customerName
 				+ ", noOfTickets=" + noOfTickets + "]";
+	}
+	
+	// default sorting criteria based on no. of tickets booked
+	@Override
+	public int compareTo(MovieBooking o) {
+		return (this.getNoOfTickets() - o.getNoOfTickets());
 	}
 	
 }
