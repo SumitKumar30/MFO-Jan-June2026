@@ -31,11 +31,11 @@ public class MovieBookingService {
 	// method to fetch all movie bookings
 	public List<MovieBooking> fetchAllBookings(){
 		List<MovieBooking> bookings = movieBookingRepository.retriveBookings();
+		
+		// sort movie bookings by no. of tickets booked
 		Collections.sort(bookings);
 		
 		return bookings;
-		
-		// sort movie bookings by no. of tickets booked
 	}
 	
 	// find a movie booking by id

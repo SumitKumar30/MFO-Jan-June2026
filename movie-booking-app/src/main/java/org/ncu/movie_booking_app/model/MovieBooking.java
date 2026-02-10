@@ -12,6 +12,9 @@ public class MovieBooking implements Comparable<MovieBooking>{
 		this.customerName = customerName;
 		this.noOfTickets = noOfTickets;
 	}
+	
+	public MovieBooking() {}
+	
 	public int getBookingId() {
 		return bookingId;
 	}

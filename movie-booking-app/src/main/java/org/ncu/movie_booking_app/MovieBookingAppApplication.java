@@ -42,25 +42,28 @@ public class MovieBookingAppApplication implements CommandLineRunner{
 		
 		System.out.println("================ All Movie Bookings ============");
 		
-		/*
-		 * List<MovieBooking> list= movieBookingService.fetchAllBookings();
-		 * 
-		 * for(MovieBooking mBooking : list) System.out.println(mBooking);
-		 */
 		
-		movieBookingService.fetchAllBookings().forEach(movieBooking -> System.out.println(movieBooking));
+		  List<MovieBooking> list= movieBookingService.fetchAllBookings();
+		  
+		  for(MovieBooking mBooking : list) System.out.println(mBooking);
+		 
 		
-		System.out.println("================ Find Movie Booking ============");
-		
-		System.out.println(movieBookingService.fetchMovieBookingById(104));
-		
-		System.out.println("================ Update Movie Booking ============");
-	
-		System.out.println(movieBookingService.updateBooking(104, "Batman Begins", "Gaurav", 14));
-		
-		System.out.println("================ Remove Movie Booking ============");
-		
-		System.out.println(movieBookingService.deleteBooking(104));
+		  movieBookingService.fetchAllBookings().forEach(movieBooking ->
+		  System.out.println(movieBooking));
+		  
+		  System.out.println("================ Find Movie Booking ============");
+		  
+		  System.out.println(movieBookingService.fetchMovieBookingById(104));
+		  
+		  System.out.println("================ Update Movie Booking ============");
+		  
+		  System.out.println(movieBookingService.updateBooking(104, "Batman Begins",
+		  "Gaurav", 14));
+		  
+		  System.out.println("================ Remove Movie Booking ============");
+		  
+		  movieBookingService.deleteBooking(104).forEach(movieBooking -> System.out.println(movieBooking));
+		 
 	}
 
 }
