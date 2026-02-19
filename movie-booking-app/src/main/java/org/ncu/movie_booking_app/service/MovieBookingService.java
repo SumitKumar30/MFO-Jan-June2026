@@ -4,9 +4,12 @@ package org.ncu.movie_booking_app.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.ncu.movie_booking_app.model.MovieBooking;
 import org.ncu.movie_booking_app.repository.MovieBookingRepository;
+import org.ncu.movie_booking_app.repository.extractor.TotalTicketsExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,5 +62,26 @@ public class MovieBookingService {
 	// delete a movie booking by id
 	public List<MovieBooking> deleteBooking(int id){
 		return movieBookingRepository.deleteBookingById(id);
+	}
+	
+	// calculate total tickets sold
+	public int calculateTotalTicketsSold() {
+		int total = movieBookingRepository.getTotalTicketsSold();
+		if(total == 0) {
+			throw new IllegalStateException("No tickets sold yet!");
+		}
+		
+		return total;
+	}
+	
+	// ticekts sold per movie ticket
+	public int calculateTicketsSoldPerMovie(String movieName) {
+		int ticketsPerMovie = 0;
+		Map<String, Integer> movieTickets= movieBookingRepository.getMovieWiseTicketSales();
+		for(Entry<String, Integer> entry : movieTickets.entrySet() ) {
+			if(entry.getKey().equals(movieName))
+				ticketsPerMovie = entry.getValue();
+		}
+		return ticketsPerMovie;
 	}
 }

@@ -25,19 +25,22 @@ public class MovieBookingAppApplication implements CommandLineRunner{
 		// user input logic
 		
 		System.out.println("Booking Movies.....");
-		movieBookingService.acceptBooking(101, "Dhurandhar", "Rahul", 5);
+		movieBookingService.acceptBooking(106, "Border", "Amit", 10);
 		
 		System.out.println("Movie Booked successfully!!");
-		movieBookingService.acceptBooking(102, "Batman", "Abhishek", 3);
+		movieBookingService.acceptBooking(107, "Inception", "Abhishek", 4);
 		System.out.println("Movie Booked successfully!!");
 		
-		movieBookingService.acceptBooking(103, "Tere Naam", "Kartik", 6);
+		movieBookingService.acceptBooking(108, "Interstellar", "Kartik", 6);
 		System.out.println("Movie Booked successfully!!");
 		
-		movieBookingService.acceptBooking(104, "Avengers", "Deepesh", 10);
+		movieBookingService.acceptBooking(109, "Wanted", "Deepesh", 10);
 		System.out.println("Movie Booked successfully!!");
 		
-		movieBookingService.acceptBooking(105, "Mission Impossible", "Ankush", 8);
+		movieBookingService.acceptBooking(110, "Mission Impossible - VII", "Ankush", 8);
+		System.out.println("Movie Booked successfully!!");
+		
+		movieBookingService.acceptBooking(111, "Interstellar", "Ankush", 8);
 		System.out.println("Movie Booked successfully!!");
 		
 		System.out.println("================ All Movie Bookings ============");
@@ -53,16 +56,22 @@ public class MovieBookingAppApplication implements CommandLineRunner{
 		  
 		  System.out.println("================ Find Movie Booking ============");
 		  
-		  System.out.println(movieBookingService.fetchMovieBookingById(104));
+		  System.out.println(movieBookingService.fetchMovieBookingById(109));
 		  
 		  System.out.println("================ Update Movie Booking ============");
 		  
-		  System.out.println(movieBookingService.updateBooking(104, "Batman Begins",
+		  System.out.println(movieBookingService.updateBooking(109, "Batman Begins",
 		  "Gaurav", 14));
 		  
 		  System.out.println("================ Remove Movie Booking ============");
 		  
-		  movieBookingService.deleteBooking(104).forEach(movieBooking -> System.out.println(movieBooking));
+		  movieBookingService.deleteBooking(109).forEach(movieBooking -> System.out.println(movieBooking));
+		  
+		  System.out.println("==================== Total Tickets Sold ============================");
+		  System.out.println(movieBookingService.calculateTotalTicketsSold());
+		  
+		  System.out.println("========================== Tickets Sold Per Movie =========================");
+		  System.out.println("Tickets sold for give movie: "+movieBookingService.calculateTicketsSoldPerMovie("Interstellar"));
 		 
 	}
 

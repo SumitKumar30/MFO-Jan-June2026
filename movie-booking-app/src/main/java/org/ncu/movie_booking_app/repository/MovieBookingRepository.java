@@ -4,8 +4,12 @@ package org.ncu.movie_booking_app.repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.jspecify.annotations.Nullable;
 import org.ncu.movie_booking_app.model.MovieBooking;
+import org.ncu.movie_booking_app.repository.extractor.MovieWiseTicketExtractor;
+import org.ncu.movie_booking_app.repository.extractor.TotalTicketsExtractor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -88,5 +92,17 @@ public class MovieBookingRepository {
 		else {
 			throw new IllegalArgumentException("Record not found!!");
 		}
+	}
+	
+	// tickets sold across all movie bookings
+	public int getTotalTicketsSold() {
+		String sqlString = "select tickets from moviebooking";
+		return jdbcTemplate.query(sqlString, new TotalTicketsExtractor());
+	}
+	
+	// Total tickets sold per movie
+	public Map<String, Integer> getMovieWiseTicketSales(){
+		String sqlString = "select moviename, tickets from moviebooking";
+		return jdbcTemplate.query(sqlString, new MovieWiseTicketExtractor());
 	}
 }
