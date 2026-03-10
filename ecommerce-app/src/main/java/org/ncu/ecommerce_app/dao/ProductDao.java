@@ -27,9 +27,9 @@ public class ProductDao {
 	        return jdbcTemplate.query(sql, rowMapper);
 	 }
 	 
-	 public Product findById(int id) {
+	 public Product findByProductId(long productId) {
 		 String sqlString = "select id, name, price, quantity FROM products WHERE id = ?";
-		 return jdbcTemplate.queryForObject(sqlString, rowMapper, id);
+		 return jdbcTemplate.queryForObject(sqlString, rowMapper, productId);
 	 }
 	 
 	 public void saveProduct(Product product) {
